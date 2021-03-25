@@ -1,0 +1,15 @@
+﻿@model Nest.ISearchResponse<ElasticsearchNoCShar.app.Models.Livro>
+<form asp-controller="Home" asp-action="Index" method="post">
+    <input type="text" name="query" />
+    <input type="submit" value="Search" />
+</form>
+@if (Model.Documents.Any())
+{
+    <h3>Buscar Resultados</h3>
+    <ul>
+        @foreach (var livro in Model.Documents)
+        {
+            <li>Titulo: @livro.Titulo (ISBN: @livro.Isbn)</li>
+        }
+    </ul>
+}
